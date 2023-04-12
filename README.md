@@ -31,9 +31,9 @@ where N in the function name is the number of layers in the model that should be
 - `input_shape` - Shape of the input images
 - `output_units` - Number of output units used in the last layer if `include_top` is `True` (default: `1000`)
 - `include_top` - Whether to include the network top after global average pooling or the flatten layer (default: `True`)
-- `after_input` - Custom layers to add after the input like preprocessing layers as a Keras model of class `tf.keras.Sequential` or as a single layer of class `tf.keras.layers.Layer` (default: `None` - no custom layers)
+- `after_input` - Custom layers to add after the input like preprocessing layers as a Keras model of class [`tf.keras.Sequential`](https://www.tensorflow.org/api_docs/python/tf/keras/Sequential) or as a single layer of class [`tf.keras.layers.Layer`](https://www.tensorflow.org/api_docs/python/tf/keras/layers/Layer) (default: `None` - no custom layers)
 - `normalize` - Whether to normalize the input images to the range [0, 1] (default: `False`)
-- `kernel_regularizer` - Kernel regularizer of class `tf.keras.regularizers.Regularizer` (default: `None`)
+- `kernel_regularizer` - Kernel regularizer of class [`tf.keras.regularizers.Regularizer`](https://www.tensorflow.org/api_docs/python/tf/keras/regularizers/Regularizer) (default: `None`)
 - `kernel_initializer` - Kernel initializer (default: `he_uniform`)
 - `flatten` - Whether to use a flatten layer instead of a global average pooling layer after the last block (default: `False` - use global average pooling)
 - `dropout_rate` - Dropout rate used after global average pooling or flattening (default: `0.0`)
