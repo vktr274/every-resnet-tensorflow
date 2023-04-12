@@ -1,6 +1,6 @@
 # Every ResNet in TensorFlow 2
 
-This repository contains implementations of every ResNet model descibed in the [Deep Residual Learning for Image Recognition](https://arxiv.org/abs/1512.03385) paper by Kaiming He, Xiangyu Zhang, Shaoqing Ren, and Jian Sun (2015). The models are implemented in the [`resnets.py`](./src/resnets.py) file. The only requirement is TensorFlow 2 or higher (tested with TensorFlow 2.11.0).
+This repository contains implementations of every ResNet model descibed in the [Deep Residual Learning for Image Recognition](https://arxiv.org/abs/1512.03385) paper by Kaiming He, Xiangyu Zhang, Shaoqing Ren, and Jian Sun (2015). The models are implemented in the [`resnets.py`](./resnets.py) file. The only requirement is TensorFlow 2 or higher (tested with TensorFlow 2.11.0).
 
 The implemented models are:
 
@@ -38,7 +38,7 @@ where N in the function name is the number of layers in the model that should be
 - `flatten` - Whether to use a flatten layer instead of a global average pooling layer after the last block (default: `False` - use global average pooling)
 - `dropout_rate` - Dropout rate used after global average pooling or flattening (default: `0.0`)
 
-Models use the [Functional API](https://www.tensorflow.org/guide/keras/functional) of Keras under the hood which defines the model's structure as a directed acyclic graph of layers. The function returns a `tf.keras.Model` instance that needs to be compiled and trained.
+Models use the [Functional API](https://www.tensorflow.org/guide/keras/functional) of Keras under the hood which defines the model's structure as a directed acyclic graph of layers. The function returns a [`tf.keras.Model`](https://www.tensorflow.org/api_docs/python/tf/keras/Model) instance that needs to be compiled and trained.
 
 The implementation was tested by successfully creating each model and printing its summary to text files. A helper function to print model summaries to text files was used:
 
