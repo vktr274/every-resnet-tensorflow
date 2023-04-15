@@ -176,6 +176,9 @@ def ResNet(
 
     :return: ResNet model
     """
+    if net_size not in ("small", "large"):
+        raise ValueError("Invalid net_size value. Must be 'small' or 'large'.")
+
     x_in = Input(shape=input_shape)
     y_out = x_in
 
