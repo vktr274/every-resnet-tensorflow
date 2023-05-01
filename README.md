@@ -15,14 +15,14 @@ Each model is implemented as a function that follows this signature:
 ```py
 def ResNetN(
     input_shape: Tuple[int, int, int],
-    output_units=1000,
-    include_top=True,
-    after_input: Union[Sequential, Layer, None] = None,
-    normalize=False,
-    kernel_regularizer: Union[Regularizer, None] = None,
-    kernel_initializer="he_uniform",
-    flatten=False,
-    dropout_rate=0.0,
+    output_units: int = 1000,
+    include_top: bool = True,
+    after_input: Optional[Union[Sequential, Layer]] = None,
+    normalize: bool = False,
+    kernel_regularizer: Optional[Regularizer] = None,
+    kernel_initializer: Union[Initializer, str] = "he_uniform",
+    flatten: bool = False,
+    dropout_rate: float = 0.0,
 ) -> Model
 ```
 
