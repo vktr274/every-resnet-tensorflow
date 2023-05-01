@@ -3,10 +3,11 @@
 # by Kaiming He, Xiangyu Zhang, Shaoqing Ren, and Jian Sun
 # https://arxiv.org/pdf/1512.03385.pdf
 
-from typing import Tuple, Union
+from typing import Optional, Tuple, Union
 from tensorflow.keras import Input
 from tensorflow.keras.models import Model, Sequential
 from tensorflow.keras.regularizers import Regularizer
+from tensorflow.keras.initializers import Initializer
 from tensorflow.keras.layers import (
     Dropout,
     Rescaling,
@@ -26,10 +27,10 @@ from tensorflow.keras.layers import (
 def ResidualBlockLarge(
     x_in,
     filters: Tuple[int, int, int],
-    s=1,
-    reduce=False,
-    kernel_regularizer: Union[Regularizer, None] = None,
-    kernel_initializer="he_uniform",
+    s: int = 1,
+    reduce: bool = False,
+    kernel_regularizer: Optional[Regularizer] = None,
+    kernel_initializer: Union[Initializer, str] = "he_uniform",
 ):
     """
     Create a ResNet block with 3 layers
@@ -91,10 +92,10 @@ def ResidualBlockLarge(
 def ResidualBlockSmall(
     x_in,
     filters: Tuple[int, int],
-    s=1,
-    reduce=False,
-    kernel_regularizer: Union[Regularizer, None] = None,
-    kernel_initializer="he_uniform",
+    s: int = 1,
+    reduce: bool = False,
+    kernel_regularizer: Optional[Regularizer] = None,
+    kernel_initializer: Union[Initializer, str] = "he_uniform",
 ):
     """
     Create a ResNet block with 2 layers
@@ -150,14 +151,14 @@ def ResNet(
     input_shape: Tuple[int, int, int],
     block_sizes: Tuple[int, int, int, int],
     net_size: str,
-    output_units=1000,
-    include_top=True,
-    after_input: Union[Sequential, Layer, None] = None,
-    normalize=False,
-    kernel_regularizer: Union[Regularizer, None] = None,
-    kernel_initializer="he_uniform",
-    flatten=False,
-    dropout_rate=0.0,
+    output_units: int = 1000,
+    include_top: bool = True,
+    after_input: Optional[Union[Sequential, Layer]] = None,
+    normalize: bool = False,
+    kernel_regularizer: Optional[Regularizer] = None,
+    kernel_initializer: Union[Initializer, str] = "he_uniform",
+    flatten: bool = False,
+    dropout_rate: float = 0.0,
 ) -> Model:
     """
     Create one of ResNet-18, ResNet-34, ResNet-50, ResNet-101, and ResNet-152
@@ -303,14 +304,14 @@ def ResNet(
 
 def ResNet18(
     input_shape: Tuple[int, int, int],
-    output_units=1000,
-    include_top=True,
-    after_input: Union[Sequential, Layer, None] = None,
-    normalize=False,
-    kernel_regularizer: Union[Regularizer, None] = None,
-    kernel_initializer="he_uniform",
-    flatten=False,
-    dropout_rate=0.0,
+    output_units: int = 1000,
+    include_top: bool = True,
+    after_input: Optional[Union[Sequential, Layer]] = None,
+    normalize: bool = False,
+    kernel_regularizer: Optional[Regularizer] = None,
+    kernel_initializer: Union[Initializer, str] = "he_uniform",
+    flatten: bool = False,
+    dropout_rate: float = 0.0,
 ) -> Model:
     """
     Create a ResNet-18 model.
@@ -344,14 +345,14 @@ def ResNet18(
 
 def ResNet34(
     input_shape: Tuple[int, int, int],
-    output_units=1000,
-    include_top=True,
-    after_input: Union[Sequential, Layer, None] = None,
-    normalize=False,
-    kernel_regularizer: Union[Regularizer, None] = None,
-    kernel_initializer="he_uniform",
-    flatten=False,
-    dropout_rate=0.0,
+    output_units: int = 1000,
+    include_top: bool = True,
+    after_input: Optional[Union[Sequential, Layer]] = None,
+    normalize: bool = False,
+    kernel_regularizer: Optional[Regularizer] = None,
+    kernel_initializer: Union[Initializer, str] = "he_uniform",
+    flatten: bool = False,
+    dropout_rate: float = 0.0,
 ) -> Model:
     """
     Create a ResNet-34 model.
@@ -385,14 +386,14 @@ def ResNet34(
 
 def ResNet50(
     input_shape: Tuple[int, int, int],
-    output_units=1000,
-    include_top=True,
-    after_input: Union[Sequential, Layer, None] = None,
-    normalize=False,
-    kernel_regularizer: Union[Regularizer, None] = None,
-    kernel_initializer="he_uniform",
-    flatten=False,
-    dropout_rate=0.0,
+    output_units: int = 1000,
+    include_top: bool = True,
+    after_input: Optional[Union[Sequential, Layer]] = None,
+    normalize: bool = False,
+    kernel_regularizer: Optional[Regularizer] = None,
+    kernel_initializer: Union[Initializer, str] = "he_uniform",
+    flatten: bool = False,
+    dropout_rate: float = 0.0,
 ) -> Model:
     """
     Create a ResNet-50 model.
@@ -426,14 +427,14 @@ def ResNet50(
 
 def ResNet101(
     input_shape: Tuple[int, int, int],
-    output_units=1000,
-    include_top=True,
-    after_input: Union[Sequential, Layer, None] = None,
-    normalize=False,
-    kernel_regularizer: Union[Regularizer, None] = None,
-    kernel_initializer="he_uniform",
-    flatten=False,
-    dropout_rate=0.0,
+    output_units: int = 1000,
+    include_top: bool = True,
+    after_input: Optional[Union[Sequential, Layer]] = None,
+    normalize: bool = False,
+    kernel_regularizer: Optional[Regularizer] = None,
+    kernel_initializer: Union[Initializer, str] = "he_uniform",
+    flatten: bool = False,
+    dropout_rate: float = 0.0,
 ) -> Model:
     """
     Create a ResNet-101 model.
@@ -467,14 +468,14 @@ def ResNet101(
 
 def ResNet152(
     input_shape: Tuple[int, int, int],
-    output_units=1000,
-    include_top=True,
-    after_input: Union[Sequential, Layer, None] = None,
-    normalize=False,
-    kernel_regularizer: Union[Regularizer, None] = None,
-    kernel_initializer="he_uniform",
-    flatten=False,
-    dropout_rate=0.0,
+    output_units: int = 1000,
+    include_top: bool = True,
+    after_input: Optional[Union[Sequential, Layer]] = None,
+    normalize: bool = False,
+    kernel_regularizer: Optional[Regularizer] = None,
+    kernel_initializer: Union[Initializer, str] = "he_uniform",
+    flatten: bool = False,
+    dropout_rate: float = 0.0,
 ) -> Model:
     """
     Create a ResNet-152 model.
