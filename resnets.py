@@ -166,7 +166,7 @@ def ResNet(
     :param input_shape: Shape of the input images.
     :param block_sizes: Number of layers in each block.
     :param net_size: Size of ResNet 'small' for ResNet-18 and ResNet-34, 'large' for ResNet-50, ResNet-101, and ResNet-152.
-    :param output_units: NNumber of output units used in the last layer if include_top is True (default: 1000).
+    :param output_units: Number of output units used in the last layer if include_top is True (default: 1000).
     :param include_top: Whether to include the network top after global average pooling or the flatten layer (default: True).
     :param after_input: Custom layers to add after the input like preprocessing layers as a Keras model of class
     tf.keras.Sequential or as a single layer of class tf.keras.layers.Layer (default: None - no custom layers).
@@ -319,7 +319,7 @@ def ResNet18(
     Create a ResNet-18 model.
 
     :param input_shape: Shape of the input images.
-    :param output_units: NNumber of output units used in the last layer if include_top is True (default: 1000).
+    :param output_units: Number of output units used in the last layer if include_top is True (default: 1000).
     :param include_top: Whether to include the network top after global average pooling or the flatten layer (default: True).
     :param after_input: Custom layers to add after the input like preprocessing layers as a Keras model of class
     tf.keras.Sequential or as a single layer of class tf.keras.layers.Layer (default: None - no custom layers).
@@ -362,7 +362,7 @@ def ResNet34(
     Create a ResNet-34 model.
 
     :param input_shape: Shape of the input images.
-    :param output_units: NNumber of output units used in the last layer if include_top is True (default: 1000).
+    :param output_units: Number of output units used in the last layer if include_top is True (default: 1000).
     :param include_top: Whether to include the network top after global average pooling or the flatten layer (default: True).
     :param after_input: Custom layers to add after the input like preprocessing layers as a Keras model of class
     tf.keras.Sequential or as a single layer of class tf.keras.layers.Layer (default: None - no custom layers).
@@ -405,7 +405,7 @@ def ResNet50(
     Create a ResNet-50 model.
 
     :param input_shape: Shape of the input images.
-    :param output_units: NNumber of output units used in the last layer if include_top is True (default: 1000).
+    :param output_units: Number of output units used in the last layer if include_top is True (default: 1000).
     :param include_top: Whether to include the network top after global average pooling or the flatten layer (default: True).
     :param after_input: Custom layers to add after the input like preprocessing layers as a Keras model of class
     tf.keras.Sequential or as a single layer of class tf.keras.layers.Layer (default: None - no custom layers).
@@ -448,7 +448,7 @@ def ResNet101(
     Create a ResNet-101 model.
 
     :param input_shape: Shape of the input images.
-    :param output_units: NNumber of output units used in the last layer if include_top is True (default: 1000).
+    :param output_units: Number of output units used in the last layer if include_top is True (default: 1000).
     :param include_top: Whether to include the network top after global average pooling or the flatten layer (default: True).
     :param after_input: Custom layers to add after the input like preprocessing layers as a Keras model of class
     tf.keras.Sequential or as a single layer of class tf.keras.layers.Layer (default: None - no custom layers).
@@ -491,7 +491,7 @@ def ResNet152(
     Create a ResNet-152 model.
 
     :param input_shape: Shape of the input images.
-    :param output_units: NNumber of output units used in the last layer if include_top is True (default: 1000).
+    :param output_units: Number of output units used in the last layer if include_top is True (default: 1000).
     :param include_top: Whether to include the network top after global average pooling or the flatten layer (default: True).
     :param after_input: Custom layers to add after the input like preprocessing layers as a Keras model of class
     tf.keras.Sequential or as a single layer of class tf.keras.layers.Layer (default: None - no custom layers).
