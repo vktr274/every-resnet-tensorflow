@@ -19,7 +19,7 @@ def ResNetN(
     include_top: bool = True,
     after_input: Optional[Union[Sequential, Layer]] = None,
     normalize: bool = False,
-    kernel_regularizer: Optional[Regularizer] = None,
+    kernel_regularizer: Optional[Union[Regularizer, str]] = None,
     kernel_initializer: Union[Initializer, str] = "he_uniform",
     flatten: bool = False,
     dropout_rate: float = 0.0,
