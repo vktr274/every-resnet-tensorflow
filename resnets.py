@@ -29,7 +29,7 @@ def ResidualBlockLarge(
     filters: Tuple[int, int, int],
     s: int = 1,
     reduce: bool = False,
-    kernel_regularizer: Optional[Regularizer] = None,
+    kernel_regularizer: Optional[Union[Regularizer, str]] = None,
     kernel_initializer: Union[Initializer, str] = "he_uniform",
 ):
     """
@@ -94,7 +94,7 @@ def ResidualBlockSmall(
     filters: Tuple[int, int],
     s: int = 1,
     reduce: bool = False,
-    kernel_regularizer: Optional[Regularizer] = None,
+    kernel_regularizer: Optional[Union[Regularizer, str]] = None,
     kernel_initializer: Union[Initializer, str] = "he_uniform",
 ):
     """
@@ -155,7 +155,7 @@ def ResNet(
     include_top: bool = True,
     after_input: Optional[Union[Sequential, Layer]] = None,
     normalize: bool = False,
-    kernel_regularizer: Optional[Regularizer] = None,
+    kernel_regularizer: Optional[Union[Regularizer, str]] = None,
     kernel_initializer: Union[Initializer, str] = "he_uniform",
     flatten: bool = False,
     dropout_rate: float = 0.0,
@@ -163,19 +163,21 @@ def ResNet(
     """
     Create one of ResNet-18, ResNet-34, ResNet-50, ResNet-101, and ResNet-152
 
-    :param input_shape: Input shape.
+    :param input_shape: Shape of the input images.
     :param block_sizes: Number of layers in each block.
     :param net_size: Size of ResNet 'small' for ResNet-18 and ResNet-34, 'large' for ResNet-50, ResNet-101, and ResNet-152.
-    :param output_units: Number of output units.
-    :param include_top: Whether to include the network top after global average pooling or the flatten layer.
-    :param after_input: Custom layers to add after the input like preprocessing layers as a Sequential model or a single layer.
-    :param normalize: Whether to normalize the inputs to [0, 1].
-    :param kernel_regularizer: The kernel regularizer to use.
-    :param kernel_initializer: The kernel initializer to use.
-    :param flatten: Whether to use a flatten layer instead of a global average pooling layer after the last block.
-    :param dropout_rate: Dropout rate after the global average pooling layer or the flatten layer.
+    :param output_units: NNumber of output units used in the last layer if include_top is True (default: 1000).
+    :param include_top: Whether to include the network top after global average pooling or the flatten layer (default: True).
+    :param after_input: Custom layers to add after the input like preprocessing layers as a Keras model of class
+    tf.keras.Sequential or as a single layer of class tf.keras.layers.Layer (default: None - no custom layers).
+    :param normalize: Whether to normalize the input images to the range [0, 1] (default: False).
+    :param kernel_regularizer: Kernel regularizer of class tf.keras.regularizers.Regularizer or as a string (default: None).
+    :param kernel_initializer: Kernel initializer of class tf.keras.initializers.Initializer or as a string (default: "he_uniform").
+    :param flatten: Whether to use a flatten layer instead of a global average pooling layer after the last block
+    (default: False - use global average pooling).
+    :param dropout_rate: Dropout rate used after global average pooling or flattening (default: 0.0).
 
-    :return: ResNet model
+    :return: ResNet model.
     """
     if net_size not in ("small", "large"):
         raise ValueError("Invalid net_size value. Must be 'small' or 'large'.")
@@ -308,7 +310,7 @@ def ResNet18(
     include_top: bool = True,
     after_input: Optional[Union[Sequential, Layer]] = None,
     normalize: bool = False,
-    kernel_regularizer: Optional[Regularizer] = None,
+    kernel_regularizer: Optional[Union[Regularizer, str]] = None,
     kernel_initializer: Union[Initializer, str] = "he_uniform",
     flatten: bool = False,
     dropout_rate: float = 0.0,
@@ -316,17 +318,19 @@ def ResNet18(
     """
     Create a ResNet-18 model.
 
-    :param input_shape: The shape of the input.
-    :param output_units: The number of output units.
-    :param include_top: Whether to include the network top after global average pooling or the flatten layer.
-    :param after_input: Custom layers to add after the input like preprocessing layers as a Sequential model or a single layer.
-    :param normalize: Whether to normalize the inputs to [0, 1].
-    :param kernel_regularizer: The kernel regularizer to use.
-    :param kernel_initializer: The kernel initializer to use.
-    :param flatten: Whether to use a flatten layer instead of a global average pooling layer after the last block.
-    :param dropout_rate: Dropout rate after the global average pooling layer or the flatten layer.
+    :param input_shape: Shape of the input images.
+    :param output_units: NNumber of output units used in the last layer if include_top is True (default: 1000).
+    :param include_top: Whether to include the network top after global average pooling or the flatten layer (default: True).
+    :param after_input: Custom layers to add after the input like preprocessing layers as a Keras model of class
+    tf.keras.Sequential or as a single layer of class tf.keras.layers.Layer (default: None - no custom layers).
+    :param normalize: Whether to normalize the input images to the range [0, 1] (default: False).
+    :param kernel_regularizer: Kernel regularizer of class tf.keras.regularizers.Regularizer or as a string (default: None).
+    :param kernel_initializer: Kernel initializer of class tf.keras.initializers.Initializer or as a string (default: "he_uniform").
+    :param flatten: Whether to use a flatten layer instead of a global average pooling layer after the last block
+    (default: False - use global average pooling).
+    :param dropout_rate: Dropout rate used after global average pooling or flattening (default: 0.0).
 
-    :return: The model.
+    :return: ResNet-18 model.
     """
     return ResNet(
         input_shape,
@@ -349,7 +353,7 @@ def ResNet34(
     include_top: bool = True,
     after_input: Optional[Union[Sequential, Layer]] = None,
     normalize: bool = False,
-    kernel_regularizer: Optional[Regularizer] = None,
+    kernel_regularizer: Optional[Union[Regularizer, str]] = None,
     kernel_initializer: Union[Initializer, str] = "he_uniform",
     flatten: bool = False,
     dropout_rate: float = 0.0,
@@ -357,17 +361,19 @@ def ResNet34(
     """
     Create a ResNet-34 model.
 
-    :param input_shape: The shape of the input.
-    :param output_units: The number of output units.
-    :param include_top: Whether to include the network top after global average pooling or the flatten layer.
-    :param after_input: Custom layers to add after the input like preprocessing layers as a Sequential model or a single layer.
-    :param normalize: Whether to normalize the inputs to [0, 1].
-    :param kernel_regularizer: The kernel regularizer to use.
-    :param kernel_initializer: The kernel initializer to use.
-    :param flatten: Whether to use a flatten layer instead of a global average pooling layer after the last block.
-    :param dropout_rate: Dropout rate after the global average pooling layer or the flatten layer.
+    :param input_shape: Shape of the input images.
+    :param output_units: NNumber of output units used in the last layer if include_top is True (default: 1000).
+    :param include_top: Whether to include the network top after global average pooling or the flatten layer (default: True).
+    :param after_input: Custom layers to add after the input like preprocessing layers as a Keras model of class
+    tf.keras.Sequential or as a single layer of class tf.keras.layers.Layer (default: None - no custom layers).
+    :param normalize: Whether to normalize the input images to the range [0, 1] (default: False).
+    :param kernel_regularizer: Kernel regularizer of class tf.keras.regularizers.Regularizer or as a string (default: None).
+    :param kernel_initializer: Kernel initializer of class tf.keras.initializers.Initializer or as a string (default: "he_uniform").
+    :param flatten: Whether to use a flatten layer instead of a global average pooling layer after the last block
+    (default: False - use global average pooling).
+    :param dropout_rate: Dropout rate used after global average pooling or flattening (default: 0.0).
 
-    :return: The model.
+    :return: ResNet-34 model.
     """
     return ResNet(
         input_shape,
@@ -390,7 +396,7 @@ def ResNet50(
     include_top: bool = True,
     after_input: Optional[Union[Sequential, Layer]] = None,
     normalize: bool = False,
-    kernel_regularizer: Optional[Regularizer] = None,
+    kernel_regularizer: Optional[Union[Regularizer, str]] = None,
     kernel_initializer: Union[Initializer, str] = "he_uniform",
     flatten: bool = False,
     dropout_rate: float = 0.0,
@@ -398,17 +404,19 @@ def ResNet50(
     """
     Create a ResNet-50 model.
 
-    :param input_shape: The shape of the input.
-    :param output_units: The number of output units.
-    :param include_top: Whether to include the network top after global average pooling or the flatten layer.
-    :param after_input: Custom layers to add after the input like preprocessing layers as a Sequential model or a single layer.
-    :param normalize: Whether to normalize the inputs to [0, 1].
-    :param kernel_regularizer: The kernel regularizer to use.
-    :param kernel_initializer: The kernel initializer to use.
-    :param flatten: Whether to use a flatten layer instead of a global average pooling layer after the last block.
-    :param dropout_rate: Dropout rate after the global average pooling layer or the flatten layer.
+    :param input_shape: Shape of the input images.
+    :param output_units: NNumber of output units used in the last layer if include_top is True (default: 1000).
+    :param include_top: Whether to include the network top after global average pooling or the flatten layer (default: True).
+    :param after_input: Custom layers to add after the input like preprocessing layers as a Keras model of class
+    tf.keras.Sequential or as a single layer of class tf.keras.layers.Layer (default: None - no custom layers).
+    :param normalize: Whether to normalize the input images to the range [0, 1] (default: False).
+    :param kernel_regularizer: Kernel regularizer of class tf.keras.regularizers.Regularizer or as a string (default: None).
+    :param kernel_initializer: Kernel initializer of class tf.keras.initializers.Initializer or as a string (default: "he_uniform").
+    :param flatten: Whether to use a flatten layer instead of a global average pooling layer after the last block
+    (default: False - use global average pooling).
+    :param dropout_rate: Dropout rate used after global average pooling or flattening (default: 0.0).
 
-    :return: The model.
+    :return: ResNet-50 model.
     """
     return ResNet(
         input_shape,
@@ -431,7 +439,7 @@ def ResNet101(
     include_top: bool = True,
     after_input: Optional[Union[Sequential, Layer]] = None,
     normalize: bool = False,
-    kernel_regularizer: Optional[Regularizer] = None,
+    kernel_regularizer: Optional[Union[Regularizer, str]] = None,
     kernel_initializer: Union[Initializer, str] = "he_uniform",
     flatten: bool = False,
     dropout_rate: float = 0.0,
@@ -439,17 +447,19 @@ def ResNet101(
     """
     Create a ResNet-101 model.
 
-    :param input_shape: The shape of the input.
-    :param output_units: The number of output units.
-    :param include_top: Whether to include the network top after global average pooling or the flatten layer.
-    :param after_input: Custom layers to add after the input like preprocessing layers as a Sequential model or a single layer.
-    :param normalize: Whether to normalize the inputs to [0, 1].
-    :param kernel_regularizer: The kernel regularizer to use.
-    :param kernel_initializer: The kernel initializer to use.
-    :param flatten: Whether to use a flatten layer instead of a global average pooling layer after the last block.
-    :param dropout_rate: Dropout rate after the global average pooling layer or the flatten layer.
+    :param input_shape: Shape of the input images.
+    :param output_units: NNumber of output units used in the last layer if include_top is True (default: 1000).
+    :param include_top: Whether to include the network top after global average pooling or the flatten layer (default: True).
+    :param after_input: Custom layers to add after the input like preprocessing layers as a Keras model of class
+    tf.keras.Sequential or as a single layer of class tf.keras.layers.Layer (default: None - no custom layers).
+    :param normalize: Whether to normalize the input images to the range [0, 1] (default: False).
+    :param kernel_regularizer: Kernel regularizer of class tf.keras.regularizers.Regularizer or as a string (default: None).
+    :param kernel_initializer: Kernel initializer of class tf.keras.initializers.Initializer or as a string (default: "he_uniform").
+    :param flatten: Whether to use a flatten layer instead of a global average pooling layer after the last block
+    (default: False - use global average pooling).
+    :param dropout_rate: Dropout rate used after global average pooling or flattening (default: 0.0).
 
-    :return: The model.
+    :return: ResNet-101 model.
     """
     return ResNet(
         input_shape,
@@ -472,7 +482,7 @@ def ResNet152(
     include_top: bool = True,
     after_input: Optional[Union[Sequential, Layer]] = None,
     normalize: bool = False,
-    kernel_regularizer: Optional[Regularizer] = None,
+    kernel_regularizer: Optional[Union[Regularizer, str]] = None,
     kernel_initializer: Union[Initializer, str] = "he_uniform",
     flatten: bool = False,
     dropout_rate: float = 0.0,
@@ -480,17 +490,19 @@ def ResNet152(
     """
     Create a ResNet-152 model.
 
-    :param input_shape: The shape of the input.
-    :param output_units: The number of output units.
-    :param include_top: Whether to include the network top after global average pooling or the flatten layer.
-    :param after_input: Custom layers to add after the input like preprocessing layers as a Sequential model or a single layer.
-    :param normalize: Whether to normalize the inputs to [0, 1].
-    :param kernel_regularizer: The kernel regularizer to use.
-    :param kernel_initializer: The kernel initializer to use.
-    :param flatten: Whether to use a flatten layer instead of a global average pooling layer after the last block.
-    :param dropout_rate: Dropout rate after the global average pooling layer or the flatten layer.
+    :param input_shape: Shape of the input images.
+    :param output_units: NNumber of output units used in the last layer if include_top is True (default: 1000).
+    :param include_top: Whether to include the network top after global average pooling or the flatten layer (default: True).
+    :param after_input: Custom layers to add after the input like preprocessing layers as a Keras model of class
+    tf.keras.Sequential or as a single layer of class tf.keras.layers.Layer (default: None - no custom layers).
+    :param normalize: Whether to normalize the input images to the range [0, 1] (default: False).
+    :param kernel_regularizer: Kernel regularizer of class tf.keras.regularizers.Regularizer or as a string (default: None).
+    :param kernel_initializer: Kernel initializer of class tf.keras.initializers.Initializer or as a string (default: "he_uniform").
+    :param flatten: Whether to use a flatten layer instead of a global average pooling layer after the last block
+    (default: False - use global average pooling).
+    :param dropout_rate: Dropout rate used after global average pooling or flattening (default: 0.0).
 
-    :return: The model.
+    :return: ResNet-152 model.
     """
     return ResNet(
         input_shape,
